@@ -32,4 +32,6 @@ sed -i \
     "${properties}"
 
 # Install own certificate
-java -jar /usr/lib/unifi/lib/ace.jar import_key_cert /ssl/privkey.pem /ssl/fullchain.pem
+if bashio::fs.file_exists '/ssl/privkey.pem' && bashio::fs.file_exists '/ssl/fullchain.pem'
+    java -jar /usr/lib/unifi/lib/ace.jar import_key_cert /ssl/privkey.pem /ssl/fullchain.pem
+fi
