@@ -48,3 +48,6 @@ if ! bashio::fs.file_exists "/data/keystore_reset"; then
     touch /data/keystore_reset
     bashio::exit.ok
 fi
+
+# Install own certificate
+java -jar /usr/lib/unifi/lib/ace.jar import_key_cert /ssl/privkey.pem /ssl/fullchain.pem
